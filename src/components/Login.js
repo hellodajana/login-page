@@ -7,6 +7,27 @@ const Login = () => {
     password: "",
   });
 
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const inputCheck = () => {
+    const check = /[a-zA-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,8}(.[a-z{2.8}])?/g;
+    if (!data.email) {
+      setErrorMsg("Email is not valid");
+    } else if (!check.test(data.email)) {
+      setErrorMsg("Email is not valid");
+    } else {
+      setErrorMsg("");
+    }
+
+    if (!data.email && !data.password) {
+      setErrorMsg("Please type in email and password");
+    } else if (!data.password) {
+      setErrorMsg("Password is not valid");
+    } else {
+      setErrorMsg("");
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
@@ -46,8 +67,10 @@ const Login = () => {
           value={data.password}
           onChange={(e) => handleChange(e)}
         />
-        <button className="btn">Login</button>
-        <p className="login__error"></p>
+        <button onClick={inputCheck} className="btn">
+          Login
+        </button>
+        <p className="login__error">{errorMsg}</p>
       </form>
     </section>
   );
