@@ -9,6 +9,7 @@ const Login = () => {
   });
 
   const [errorMsg, setErrorMsg] = useState("");
+  const [isPending, setIsPending] = useState(false);
 
   const inputCheck = () => {
     const check = /[a-zA-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,8}(.[a-z{2.8}])?/g;
@@ -33,6 +34,7 @@ const Login = () => {
     e.preventDefault();
 
     const user = { ...data };
+    setIsPending(true);
 
     axios
       .post("url", {
@@ -40,6 +42,7 @@ const Login = () => {
       })
       .then(() => {
         console.log("Success!");
+        setIsPending(false);
       })
       .catch((err) => console.log(err));
   };
@@ -79,9 +82,15 @@ const Login = () => {
           value={data.password}
           onChange={(e) => handleChange(e)}
         />
-        <button onClick={inputCheck} className="btn">
-          Login
-        </button>
+        {!isPending ? (
+          <button onClick={inputCheck} className="btn">
+            Login
+          </button>
+        ) : (
+          <button disabled className="btn">
+            Login in...
+          </button>
+        )}
         <p className="login__error">{errorMsg}</p>
       </form>
     </section>
