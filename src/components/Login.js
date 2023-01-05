@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import "./Login.scss";
 
 const Login = () => {
@@ -30,6 +31,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const user = { ...data };
+
+    axios
+      .post("url", {
+        user,
+      })
+      .then(() => {
+        console.log("Success!");
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (e) => {
