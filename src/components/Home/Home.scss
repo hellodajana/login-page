@@ -1,0 +1,32 @@
+.home {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+  }
+  &__text {
+    padding-bottom: 8px;
+    font-weight: 300;
+    width: 80%;
+    text-align: center;
+    white-space: pre-wrap;
+  }
+  & .link {
+    color: #ee9ca7;
+    &:hover {
+      color: darken(#ee9ca7, 15%);
+    }
+  }
+  & .btns {
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+  }
+  &__btn {
+    margin-bottom: 15px;
+  }
+}
