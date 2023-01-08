@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./Login.scss";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -10,12 +11,11 @@ const Login = () => {
 
   const [errorMsg, setErrorMsg] = useState("");
   const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
 
   const inputCheck = () => {
     const check = /[a-zA-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,8}(.[a-z{2.8}])?/g;
-    if (!data.email) {
-      setErrorMsg("Email is not valid");
-    } else if (!check.test(data.email)) {
+    if (!data.email || !check.test(data.email)) {
       setErrorMsg("Email is not valid");
     } else {
       setErrorMsg("");
@@ -32,6 +32,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("password", data.password);
 
     const user = { ...data };
     setIsPending(true);
@@ -41,22 +43,22 @@ const Login = () => {
         user,
       })
       .then(() => {
+        navigate("/home");
         console.log("Success!");
-        setIsPending(false);
       })
       .catch((err) => console.log(err));
   };
 
   const handleChange = (e) => {
-    const newData = { ...data };
-    newData[e.target.id] = e.target.value;
-    setData(newData);
-    console.log(newData);
+    const user = { ...data };
+    user[e.target.id] = e.target.value;
+    setData(user);
+    console.log(user);
   };
 
   return (
     <section className="login">
-      <h1 className="login__title">Login</h1>
+      <h1 className="title">Login</h1>
       <form className="login__form" onSubmit={handleSubmit}>
         <label className="login__label" htmlFor="email">
           Email
@@ -83,12 +85,12 @@ const Login = () => {
           onChange={(e) => handleChange(e)}
         />
         {!isPending ? (
-          <button onClick={inputCheck} className="btn">
+          <button onClick={inputCheck} className="btn login__btn">
             Login
           </button>
         ) : (
-          <button disabled className="btn">
-            Login in...
+          <button disabled className="btn login__btn">
+            Loading ...
           </button>
         )}
         <p className="login__error">{errorMsg}</p>
