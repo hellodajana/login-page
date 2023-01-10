@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import axios from "./../../api/axios";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
+  const LOGIN_URL = "/access";
 
   const inputCheck = () => {
     const check = /[a-zA-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,8}(.[a-z{2.8}])?/g;
@@ -28,21 +29,29 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    localStorage.setItem("email", data.email);
-    localStorage.setItem("password", data.password);
-
-    const user = { ...data };
     setIsPending(true);
 
     axios
-      .post("url", {
-        user,
-      })
-      .then(() => {
+      .post(
+        LOGIN_URL,
+        JSON.stringify({ email: data.email, password: data.password }),
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.accessToken);
         navigate("/home");
-        console.log("Success!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrorMsg("ERROR");
+        setIsPending(false);
+        alert(err);
+      });
   };
 
   const handleChange = (e) => {
