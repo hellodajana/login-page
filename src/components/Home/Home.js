@@ -1,10 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Home.scss";
 
 const Home = () => {
   let navigate = useNavigate();
   const [isDeleted, setIsDeleted] = useState(false);
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleLogOut = (e) => {
     navigate("/");
@@ -20,9 +27,7 @@ const Home = () => {
 
   const handleRemoveAccount = async () => {
     setIsDeleted(true);
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
-    localStorage.removeItem("authenticated", true);
+    localStorage.removeItem("token");
     const result = await resolveAfter1Seconds();
     console.log(result);
   };
