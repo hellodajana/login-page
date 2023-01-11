@@ -2,7 +2,8 @@
 
 This is a solution to the [Zyax frontend programming assignment](https://github.com/zyaxab/frontend-programming-challenge).
 
-<img src="./src/assets/login.png" width=40% /> <img src="./src/assets/home.png" width="40% />
+![Login desing preview](./src/assets/login.png){: style="width=40%"}
+![Home design preview](./src/assets/home.png){: style="width=40%"}
 
 ### Assignment
 
