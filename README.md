@@ -2,8 +2,7 @@
 
 This is a solution to the [Zyax frontend programming assignment](https://github.com/zyaxab/frontend-programming-challenge).
 
-![Login desing preview](./src/assets/login.png){: style="height=83px"}
-![Home design preview](./src/assets/home.png){: style="width=83px"}
+![Design preview](./src/assets/design.png)
 
 ### Assignment
 
