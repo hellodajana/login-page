@@ -1,8 +1,11 @@
 ## Welcome! 👋
 
 This is a solution to the [Zyax frontend programming assignment](https://github.com/zyaxab/frontend-programming-challenge).
-![Login desing preview](./src/assets/login.png)
-![Home design preview](./src/assets/home.png)
+
+<p align="center">
+  <img src="./src/assets/home.png" width=50% >
+  <img src="./src/assets/home.png" width="50% >
+  </p>
 
 ### Assignment
 
