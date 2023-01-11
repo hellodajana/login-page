@@ -48,10 +48,5 @@ To launch the test runner in the interactive watch mode:
 npm test
 ```
 
-To build the app for production to the `build` folder:
-
-```
-npm test
-```
 
 **Have fun exploring!** 🚀
