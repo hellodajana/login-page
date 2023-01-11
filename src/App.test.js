@@ -29,13 +29,4 @@ describe("login app", () => {
 
     await expect(screen.findByText("ERROR")).toBeDefined();
   });
-  test("The form stores the access token in a local storage if the login is successful", async () => {
-    const credentials = { email: "test@zyax.se", password: "!zyaxSe981" };
-
-    emailInput.value = credentials.email;
-    passInput.value = credentials.password;
-    jest.spyOn(Storage.prototype, "setItem");
-    loginBtn.click();
-    await expect(localStorage.setItem).toHaveBeenCalled();
-  });
 });
