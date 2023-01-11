@@ -2,10 +2,8 @@
 
 This is a solution to the [Zyax frontend programming assignment](https://github.com/zyaxab/frontend-programming-challenge).
 
-<p align="center">
-  <img src="./src/assets/home.png" width=30% >
-  <img src="./src/assets/home.png" width="30% >
-  </p>
+  <img src="./src/assets/home.png" width=40% >
+  <img src="./src/assets/home.png" width="40% >
 
 ### Assignment
 
