@@ -2,7 +2,7 @@
 
 This is a solution to the [Zyax frontend programming assignment](https://github.com/zyaxab/frontend-programming-challenge).
 
-![Design preview](./src/assets/design.png)
+![Design preview](./src/assets/Design.png)
 
 ### Assignment
 
