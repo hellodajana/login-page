@@ -57,7 +57,6 @@ const Login = () => {
     const user = { ...data };
     user[e.target.id] = e.target.value;
     setData(user);
-    console.log(user);
   };
 
   return (
