@@ -34,8 +34,7 @@ const Login = () => {
     axios
       .post(
         LOGIN_URL,
-        JSON.stringify({ email: data.email, password: data.password }),
-
+        { email: data.email, password: data.password },
         {
           headers: {
             "Content-Type": "application/json",
