@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
+@import "./styling/_mixins";
+@import "./styling/_colors";
 
 * {
   box-sizing: border-box;
@@ -9,17 +11,7 @@
 
 body {
   height: 100vh;
-  background: #ee9ca7; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #ffdde1,
-    #ee9ca7
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #ffdde1,
-    #ee9ca7
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  @include color;
 }
 
 .title {
@@ -50,21 +42,11 @@ section {
   border-radius: 10px;
   text-transform: uppercase;
   transition: 0.6s;
-  background: #ee9ca7; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #ffdde1,
-    #ee9ca7
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #ffdde1,
-    #ee9ca7
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  @include color;
   &:hover {
     transition: 0.6s ease-in-out;
-    color: #ee9ca7;
+    color: $rose;
     background: transparent;
-    border: 1px solid #ee9ca7;
+    border: 1px solid $rose;
   }
 }
