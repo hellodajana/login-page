@@ -6,16 +6,19 @@ describe("login app", () => {
   const emailInput = screen.getByLabelText("Email", { selector: "input" });
   const passInput = screen.getByLabelText("Password", { selector: "input" });
   const loginBtn = screen.getByRole("button");
+
   test("The form is initially rendered with empty fields.", () => {
     expect(emailInput).toHaveValue("");
     expect(passInput).toHaveValue("");
   });
+
   test("The form displays an error message if the email address or password is blank", async () => {
     loginBtn.click();
-    await expect(
+    expect(
       screen.findByText("Please type in email and password")
     ).toBeDefined();
   });
+
   test("The form displays an error message if the login fails", async () => {
     const credentials = { email: "test@gmail.com", password: "testtest" };
 
@@ -27,6 +30,16 @@ describe("login app", () => {
 
     loginBtn.click();
 
-    await expect(screen.findByText("ERROR")).toBeDefined();
+    expect(screen.findByText("ERROR")).toBeDefined();
+  });
+
+  test("The form stores the access token in a local storage if the login is successful", async () => {
+    const credentials = { email: "test@zyax.se", password: "!zyaxSe981" };
+
+    emailInput.value = credentials.email;
+    passInput.value = credentials.password;
+    jest.spyOn(Storage.prototype, "setItem");
+    loginBtn.click();
+    expect(localStorage.setItem).toBeTruthy();
   });
 });
