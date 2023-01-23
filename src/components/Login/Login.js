@@ -47,9 +47,10 @@ const Login = () => {
         navigate("/home");
       })
       .catch((err) => {
-        setErrorMsg("ERROR");
+        setErrorMsg(
+          `Status ${err.response.status} : ${err.response.data.error}`
+        );
         setIsPending(false);
-        alert(err);
       });
   };
 
